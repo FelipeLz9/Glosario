@@ -12,9 +12,22 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+/**
+ * Proporciona métodos para escribir palabras  y descripciones
+ * en un archivo de texto utilizando la codificación UTF-8.
+ * @author Juan Felipe López
+ * @author Sebastián García Gil
+ */
 public class EscritorArchivo {
     
     Charset charset = Charset.forName("UTF-8");
+    
+    /**
+     * Escribe un termino y su descripción en un archivo de texto.
+     * 
+     * @param termino El objeto Termino que contiene la palabra y la descripción a escribir.
+     * @throws IOException Si ocurre un error durante la escritura en el archivo.
+     */
     
     public void escribirArchivo(Termino termino) throws IOException{
         
@@ -24,6 +37,7 @@ public class EscritorArchivo {
         
         String descripcion = termino.getDescripcion();
         
+       
         writer.write(termino.getPalabra(), 0, termino.getPalabra().length());
         writer.write(" | ");
         writer.write(descripcion, 0, descripcion.length());

@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/lopez/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/Glosario.java</file>
             <file>file:/C:/Users/lopez/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/EscritorArchivo.java</file>
+=======
+            <file>file:/C:/Users/smasg/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/Glosario.java</file>
+            <file>file:/C:/Users/smasg/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/LectorArchivo.java</file>
+            <file>file:/C:/Users/smasg/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/Termino.java</file>
+            <file>file:/C:/Users/smasg/OneDrive/Documentos/NetBeansProjects/Glosario/src/Modelos/EscritorArchivo.java</file>
+>>>>>>> 9644e67423cc834f70539ec66b5db0666b450fce
         </group>
     </open-files>
 </project-private>
