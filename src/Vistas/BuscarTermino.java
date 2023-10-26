@@ -5,6 +5,9 @@
 package Vistas;
 
 import Modelos.Glosario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -83,7 +86,15 @@ public class BuscarTermino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        JOptionPane.showMessageDialog(this, glosario.buscar(txtPalabra.getText()) + "");
+        try {
+            if(glosario.buscar(txtPalabra.getText()).equals(null)){
+                JOptionPane.showMessageDialog(this, "La palabra no se encuentra en el glosario.");
+            }else{
+                JOptionPane.showMessageDialog(this, glosario.buscar(txtPalabra.getText()));
+            }
+        } catch (IOException ex) {
+            
+        }
         limpiar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 

@@ -4,6 +4,7 @@
  */
 package Modelos;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,19 +13,27 @@ import java.util.ArrayList;
  */
 public class Glosario {
     
-
+    EscritorArchivo escritor = new EscritorArchivo();
+    LectorArchivo lector = new LectorArchivo();
+    
     public Glosario() {
     }
     
-    public void agregarTermino(String palabra, String descripcion){
+    public void agregarTermino(String palabra, String descripcion) throws IOException{
         Termino termino = new Termino(palabra, descripcion);
-    }
-    
-    public String buscar(String palabra){
+        try{
+            escritor.escribirArchivo(termino);
+        }catch(IOException e){
+            throw e;
+        }
         
     }
     
-    public ArrayList listar(){
-        
+    public String buscar(String palabra) throws IOException{
+        return lector.leer(palabra);
+    }
+    
+    public ArrayList listar() throws IOException{
+        return lector.listarContenidoDeArchivo();
     }
 }

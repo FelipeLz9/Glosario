@@ -5,37 +5,31 @@
 package Modelos;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class EscritorArchivo {
     
-    public void escribirArchivo(){
+    Charset charset = Charset.forName("UTF-8");
+    
+    public void escribirArchivo(Termino termino) throws IOException{
         
-        String rutaArchivo = "miarchivo.txt";
-
-        try {
-            // Crear un objeto FileWriter con la ruta del archivo y el modo de anexar (true)
-            FileWriter fileWriter = new FileWriter(rutaArchivo, true);
-
-            // Crear un objeto BufferedWriter para escribir en el archivo
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-
-            // El valor que deseas agregar al archivo
-            String valorAAgregar = "Este es un nuevo valor que se agrega al archivo.";
-
-            // Escribir el valor en el archivo
-            writer.write(valorAAgregar);
-            writer.newLine(); // Agregar un salto de línea después del valor
-
-            // Cerrar el BufferedWriter y FileWriter para liberar los recursos
-            writer.close();
-            fileWriter.close();
-
-            System.out.println("El valor se ha agregado al archivo con éxito.");
-        } catch (IOException e) {
-            System.err.println("Error al agregar contenido al archivo: " + e.getMessage());
-        }
+        Path outFile = Paths.get("C:\\Users\\lopez\\OneDrive\\Escritorio\\Terminos.txt");
+        
+        BufferedWriter writer = Files.newBufferedWriter(outFile, charset, StandardOpenOption.APPEND);
+        
+        String descripcion = termino.getDescripcion();
+        
+        writer.write(termino.getPalabra(), 0, termino.getPalabra().length());
+        writer.write(" | ");
+        writer.write(descripcion, 0, descripcion.length());
+        writer.newLine();
+        
+        writer.close();
     }
     
 }

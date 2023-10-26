@@ -5,6 +5,9 @@
 package Vistas;
 
 import Modelos.Glosario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -105,7 +108,11 @@ public class AnadirTermino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        glosario.agregarTermino(txtPalabra.getText(), txtDescripcion.getText());
+        try {
+            glosario.agregarTermino(txtPalabra.getText(), txtDescripcion.getText());
+        } catch (IOException ex) {
+            JOptionPane.showConfirmDialog(this, "No se encuentra el archivo.");
+        }
         JOptionPane.showMessageDialog(this, "Término añadido correctamente");
         limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed

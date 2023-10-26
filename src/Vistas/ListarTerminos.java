@@ -5,7 +5,8 @@
 package Vistas;
 
 import Modelos.Glosario;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -39,6 +40,7 @@ public class ListarTerminos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        txtPalabras.setEditable(false);
         txtPalabras.setColumns(20);
         txtPalabras.setRows(5);
         jScrollPane1.setViewportView(txtPalabras);
@@ -71,9 +73,11 @@ public class ListarTerminos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void llenarTextArea(){
-        for(Object cadena : glosario.listar()){
-            txtPalabras.append(cadena + "\n");
+    public void llenarTextArea() throws IOException{
+        txtPalabras.setText("");
+        ArrayList<String> lista = glosario.listar();
+        for (String actual: lista){
+            txtPalabras.append(actual + "\n");
         }
     }
     

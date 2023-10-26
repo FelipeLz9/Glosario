@@ -5,6 +5,12 @@
 package Vistas;
 
 import Modelos.Glosario;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -104,9 +110,33 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        ListarTerminos listar = new ListarTerminos(this, rootPaneCheckingEnabled);
+        ListarTerminos listar = new ListarTerminos(this, false);
         listar.setGlosario(glosario);
-        listar.setVisible(true);
+        
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            
+        @Override
+        protected Void doInBackground() throws Exception {
+            try {
+                listar.llenarTextArea();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return null;
+        }
+    };
+
+    // Agregar un listener para mostrar el diálogo después de que la tarea esté completa
+        worker.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (SwingWorker.StateValue.DONE.equals(evt.getNewValue())) {
+                    listar.setVisible(true);
+                }
+            }
+        });
+
+        worker.execute();
     }//GEN-LAST:event_btnListarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
